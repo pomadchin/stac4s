@@ -1,4 +1,5 @@
 {
+  "type" : "Feature",
   "id" : "LC81530252014153LGN00",
   "stac_version" : "0.9.0",
   "stac_extensions" : [
@@ -6,59 +7,71 @@
     "view",
     "https://example.com/stac/landsat-extension/1.0/schema.json"
   ],
-  "type" : "Feature",
-  "geometry" : {
-    "type" : "Polygon",
-    "coordinates" : [
+  "bbox": [
+    72.27502,
+    49.16354,
+    75.70821,
+    51.36812
+  ],
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [
       [
         [
-          51.33855,
-          72.27502
+          72.41047929658137,
+          49.7177153248036
         ],
         [
-          51.36812,
-          75.70821
+          72.4099,
+          49.7178
         ],
         [
-          49.19092,
-          75.67662
+          72.42304462193712,
+          49.7506571512844
         ],
         [
-          49.16354,
-          72.3964
+          72.43942174696257,
+          49.79159447737395
         ],
         [
-          51.33855,
-          72.27502
+          72.97737644295803,
+          51.13630099803396
+        ],
+        [
+          72.99109436013279,
+          51.1705911953537
+        ],
+        [
+          73.0069,
+          51.2101
+        ],
+        [
+          73.00767938517399,
+          51.209985918418724
+        ],
+        [
+          75.5702,
+          50.8349
+        ],
+        [
+          75.55241658634094,
+          50.79567530937191
+        ],
+        [
+          74.91339206721759,
+          49.386185570959974
+        ],
+        [
+          74.8988,
+          49.354
+        ],
+        [
+          72.41047929658137,
+          49.7177153248036
         ]
       ]
     ]
   },
-  "bbox" : [
-    49.16354,
-    72.27502,
-    51.36812,
-    75.67662
-  ],
-  "links" : [
-    {
-      "href" : "../../catalog.json",
-      "rel" : "root"
-    },
-    {
-      "href" : "../catalog.json",
-      "rel" : "parent"
-    },
-    {
-      "href" : "./LC81530252014153LGN00.json",
-      "rel" : "self"
-    },
-    {
-      "href" : "https://landsatonaws.com/L8/153/025/LC81530252014153LGN0",
-      "rel" : "alternate",
-      "type" : "text/html"
-    }
-  ],
   "assets" : {
     "B5" : {
       "href" : "http://landsat-pds.s3.amazonaws.com/L8/153/025/LC81530252014153LGN00/LC81530252014153LGN00_B5.TIF",
@@ -170,23 +183,39 @@
   "collection" : "landsat-8-l1",
   "properties" : {
     "collection" : "landsat-8-l1",
-    "landsat:image_quality_oli" : 9,
-    "datetime" : "2014-06-02T09:22:02Z",
-    "landsat:ground_control_points_verify" : 114,
-    "view:sun_azimuth" : 149.01607154,
-    "landsat:wrs_path" : 153,
-    "landsat:ground_control_points_model" : 313,
-    "landsat:wrs_row" : 25,
-    "eo:cloud_cover" : 10,
-    "landsat:image_quality_tirs" : 9,
-    "landsat:geometric_rmse_model" : 7.562,
-    "landsat:earth_sun_distance" : 1.014156,
-    "landsat:geometric_rmse_model_y" : 4.654,
-    "view:off_nadir" : 0,
-    "landsat:geometric_rmse_verify" : 5.364,
-    "landsat:geometric_rmse_model_x" : 5.96,
-    "view:azimuth" : 0,
-    "eo:gsd" : 15,
-    "view:sun_elevation" : 59.214247
-  }
+    "datetime": "2014-06-02T05:55:45.393648+00:00",
+    "eo:sun_azimuth": 149.01607154,
+    "eo:sun_elevation": 59.214247,
+    "eo:cloud_cover": 10,
+    "eo:row": "025",
+    "eo:column": "153",
+    "landsat:product_id": null,
+    "landsat:scene_id": "LC81530252014153LGN00",
+    "landsat:processing_level": "L1T",
+    "landsat:tier": "pre-collection",
+    "eo:epsg": 32643,
+    "eo:instrument": "OLI_TIRS",
+    "eo:off_nadir": 0,
+    "eo:platform": "landsat-8",
+    "eo:gsd": 15
+  },
+  "links" : [
+    {
+      "href" : "../../catalog.json",
+      "rel" : "root"
+    },
+    {
+      "href" : "../catalog.json",
+      "rel" : "parent"
+    },
+    {
+      "href" : "./LC81530252014153LGN00.json",
+      "rel" : "self"
+    },
+    {
+      "href" : "https://landsatonaws.com/L8/153/025/LC81530252014153LGN0",
+      "rel" : "alternate",
+      "type" : "text/html"
+    }
+  ]
 }
