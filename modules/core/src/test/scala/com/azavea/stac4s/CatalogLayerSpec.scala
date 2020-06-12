@@ -86,19 +86,19 @@ class CatalogLayerSpec extends AnyFunSpec with Matchers {
 
       val paLinkItems = List(
         StacLink(
-          href = "../../landsat-8-l1/LC80140332018022LGN00.json",
+          href = "../../landsat-8-l1/2018-06/LC80140332018166LGN00.json",
           rel = StacLinkType.Item,
           _type = None,
           title = None
         ),
         StacLink(
-          href = "../../landsat-8-l1/LC80150322018029LGN00.json",
+          href = "../../landsat-8-l1/2018-05/LC80150322018141LGN00.json",
           rel = StacLinkType.Item,
           _type = None,
           title = None
         ),
         StacLink(
-          href = "../../landsat-8-l1/LC80150332018029LGN00.json",
+          href = "../../landsat-8-l1/2018-07/LC80150332018189LGN00.json",
           rel = StacLinkType.Item,
           _type = None,
           title = None
@@ -107,7 +107,7 @@ class CatalogLayerSpec extends AnyFunSpec with Matchers {
 
       val usLinkItems = paLinkItems ++ List(
         StacLink(
-          href = "../../landsat-8-l1/LC81422102018023LGN00.json",
+          href = "../../landsat-8-l1/2018-06/LC80300332018166LGN00.json",
           rel = StacLinkType.Item,
           _type = None,
           title = None
@@ -141,8 +141,10 @@ class CatalogLayerSpec extends AnyFunSpec with Matchers {
         getJson("/catalogs/landsat-stac-layers/landsat-8-l1/catalog.json").as[StacCollection].valueOr(throw _)
       val layerUS = getJson("/catalogs/landsat-stac-layers/layers/us/catalog.json").as[StacCatalog].valueOr(throw _)
 
+      // ../../landsat-8-l1/2018-06/LC80300332018166LGN00.json
+
       val item = StacItem(
-        id = "LC81422102018023LGN00",
+        id = "LC80300332018166LGN00",
         stacVersion = "0.9.0",
         stacExtensions = List("eo", "view", "layers", "https://example.com/stac/landsat-extension/1.0/schema.json"),
         geometry = """
@@ -151,70 +153,70 @@ class CatalogLayerSpec extends AnyFunSpec with Matchers {
                      |    "coordinates": [
                      |      [
                      |        [
-                     |          -125.04277,
-                     |          38.51378
+                     |          -100.84368079413701,
+                     |          39.97210491033466
                      |        ],
                      |        [
-                     |          -122.39997,
-                     |          38.53006
+                     |          -98.67492641719046,
+                     |          39.54833037653145
                      |        ],
                      |        [
-                     |          -122.4166,
-                     |          36.42097
+                     |          -99.23946071016417,
+                     |          37.81370881408165
                      |        ],
                      |        [
-                     |          -124.9862,
-                     |          36.40587
+                     |          -101.40560438472555,
+                     |          38.24476872678675
                      |        ],
                      |        [
-                     |          -125.04277,
-                     |          38.51378
+                     |          -100.84368079413701,
+                     |          39.97210491033466
                      |        ]
                      |      ]
                      |    ]
                      |  }""".stripMargin.parseGeoJson[Polygon],
-        bbox = TwoDimBbox(-125.04277, 36.40587, -122.39997, 38.53006),
+        bbox = TwoDimBbox(-101.40793, 37.81084, -98.6721, 39.97469),
         properties = Map(
           "collection"               -> "landsat-8-l1".asJson,
-          "datetime"                 -> "2018-01-23T06:01:57Z".asJson,
-          "eo:sun_azimuth"           -> -70.322.asJson,
-          "eo:sun_elevation"         -> -53.777.asJson,
-          "eo:cloud_cover"           -> -1.asJson,
-          "eo:row"                   -> "210".asJson,
-          "eo:col"                   -> "142".asJson,
-          "landsat:product_id"       -> "LC08_L1GT_142210_20180123_20180123_01_RT".asJson,
-          "landsat:scene_id"         -> "LC81422102018023LGN00".asJson,
-          "landsat:processing_level" -> "L1GT".asJson,
-          "landsat:tier"             -> "RT".asJson,
-          "eo:epsg"                  -> 32610.asJson,
+          "datetime"                 -> "2018-06-15T17:18:03.154639+00:00".asJson,
+          "eo:sun_azimuth"           -> 125.5799919.asJson,
+          "eo:sun_elevation"         -> 66.54407242.asJson,
+          "eo:cloud_cover"           -> 0.asJson,
+          "eo:row"                   -> "033".asJson,
+          "eo:column"                -> "030".asJson,
+          "landsat:product_id"       -> "LC08_L1TP_030033_20180615_20180703_01_T1".asJson,
+          "landsat:scene_id"         -> "LC80300332018166LGN00".asJson,
+          "landsat:processing_level" -> "L1TP".asJson,
+          "landsat:tier"             -> "T1".asJson,
+          "eo:epsg"                  -> 32614.asJson,
           "eo:instrument"            -> "OLI_TIRS".asJson,
           "eo:off_nadir"             -> 0.asJson,
           "eo:platform"              -> "landsat-8".asJson,
           "eo:gsd"                   -> 15.asJson
         ).asJsonObject.deepMerge(
-          LayerItemExtension(NonEmptyList.of(layerUS.id) map { NonEmptyString.unsafeFrom }).asJsonObject
+          LayerItemExtension(NonEmptyList.of(NonEmptyString.unsafeFrom(layerUS.id))).asJsonObject
         ), // layer extension
         links = List(
           StacLink(
-            href = "./LC81422102018023LGN00.json",
+            href = "./LC80300332018166LGN00.json",
             rel = StacLinkType.Self,
             _type = None,
             title = None
           ),
           StacLink(
-            href = "./catalog.json",
+            href = "../catalog.json",
             rel = StacLinkType.Parent,
             _type = None,
             title = None
           ),
           StacLink(
-            href = "./catalog.json",
+            href = "../catalog.json",
             rel = StacLinkType.Collection,
             _type = None,
             title = None
           ),
           StacLink(
-            href = "../catalog.json",
+            href = "../../catalog.json",
             rel = StacLinkType.StacRoot,
             _type = None,
             title = None
@@ -223,7 +225,7 @@ class CatalogLayerSpec extends AnyFunSpec with Matchers {
         assets = Map(
           "index" -> StacItemAsset(
             href =
-              "https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/142/210/LC08_L1GT_142210_20180123_20180123_01_RT/index.html",
+              "https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/030/033/LC08_L1TP_030033_20180615_20180703_01_T1/index.html",
             title = "HTML index page".some,
             description = None,
             roles = Set.empty,
@@ -231,7 +233,7 @@ class CatalogLayerSpec extends AnyFunSpec with Matchers {
           ),
           "thumbnail" -> StacItemAsset(
             href =
-              "https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/142/210/LC08_L1GT_142210_20180123_20180123_01_RT/LC08_L1GT_142210_20180123_20180123_01_RT_thumb_large.jpg",
+              "https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/030/033/LC08_L1TP_030033_20180615_20180703_01_T1/LC08_L1TP_030033_20180615_20180703_01_T1_thumb_large.jpg",
             title = "Thumbnail image".some,
             description = None,
             roles = Set(StacAssetRole.Thumbnail),
@@ -239,102 +241,126 @@ class CatalogLayerSpec extends AnyFunSpec with Matchers {
           ),
           "B1" -> StacItemAsset(
             href =
-              "https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/142/210/LC08_L1GT_142210_20180123_20180123_01_RT/LC08_L1GT_142210_20180123_20180123_01_RT_B1.TIF",
+              "https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/030/033/LC08_L1TP_030033_20180615_20180703_01_T1/LC08_L1TP_030033_20180615_20180703_01_T1_B1.TIF",
             title = "Band 1 (coastal)".some,
             description = None,
             roles = Set.empty,
-            _type = `image/tiff`.some
-            // "eo:bands": [0],
+            _type = `image/tiff`.some,
+            Map("eo:bands" -> List(0)).asJsonObject
           ),
           "B2" -> StacItemAsset(
             href =
-              "https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/142/210/LC08_L1GT_142210_20180123_20180123_01_RT/LC08_L1GT_142210_20180123_20180123_01_RT_B2.TIF",
+              "https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/030/033/LC08_L1TP_030033_20180615_20180703_01_T1/LC08_L1TP_030033_20180615_20180703_01_T1_B2.TIF",
             title = "Band 2 (blue)".some,
             description = None,
             roles = Set.empty,
-            _type = `image/tiff`.some
-            // "eo:bands": [1],
+            _type = `image/tiff`.some,
+            Map("eo:bands" -> List(1)).asJsonObject
           ),
           "B3" -> StacItemAsset(
             href =
-              "https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/142/210/LC08_L1GT_142210_20180123_20180123_01_RT/LC08_L1GT_142210_20180123_20180123_01_RT_B3.TIF",
+              "https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/030/033/LC08_L1TP_030033_20180615_20180703_01_T1/LC08_L1TP_030033_20180615_20180703_01_T1_B3.TIF",
             title = "Band 3 (green)".some,
             description = None,
             roles = Set.empty,
-            _type = `image/tiff`.some
-            // "eo:bands": [2],
+            _type = `image/tiff`.some,
+            Map("eo:bands" -> List(2)).asJsonObject
           ),
           "B4" -> StacItemAsset(
             href =
-              "https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/142/210/LC08_L1GT_142210_20180123_20180123_01_RT/LC08_L1GT_142210_20180123_20180123_01_RT_B4.TIF",
+              "https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/030/033/LC08_L1TP_030033_20180615_20180703_01_T1/LC08_L1TP_030033_20180615_20180703_01_T1_B4.TIF",
             title = "Band 4 (red)".some,
             description = None,
             roles = Set.empty,
-            _type = `image/tiff`.some
-            // "eo:bands": [3],
+            _type = `image/tiff`.some,
+            Map("eo:bands" -> List(3)).asJsonObject
           ),
           "B5" -> StacItemAsset(
             href =
-              "https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/142/210/LC08_L1GT_142210_20180123_20180123_01_RT/LC08_L1GT_142210_20180123_20180123_01_RT_B5.TIF",
+              "https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/030/033/LC08_L1TP_030033_20180615_20180703_01_T1/LC08_L1TP_030033_20180615_20180703_01_T1_B5.TIF",
             title = "Band 5 (nir)".some,
             description = None,
             roles = Set.empty,
-            _type = `image/tiff`.some
-            // "eo:bands": [4],
+            _type = `image/tiff`.some,
+            Map("eo:bands" -> List(4)).asJsonObject
           ),
           "B6" -> StacItemAsset(
             href =
-              "https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/142/210/LC08_L1GT_142210_20180123_20180123_01_RT/LC08_L1GT_142210_20180123_20180123_01_RT_B6.TIF",
+              "https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/030/033/LC08_L1TP_030033_20180615_20180703_01_T1/LC08_L1TP_030033_20180615_20180703_01_T1_B6.TIF",
             title = "Band 6 (swir16)".some,
             description = None,
             roles = Set.empty,
-            _type = `image/tiff`.some
-            // "eo:bands": [5],
+            _type = `image/tiff`.some,
+            Map("eo:bands" -> List(5)).asJsonObject
           ),
           "B7" -> StacItemAsset(
             href =
-              "https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/142/210/LC08_L1GT_142210_20180123_20180123_01_RT/LC08_L1GT_142210_20180123_20180123_01_RT_B7.TIF",
+              "https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/030/033/LC08_L1TP_030033_20180615_20180703_01_T1/LC08_L1TP_030033_20180615_20180703_01_T1_B7.TIF",
             title = "Band 7 (swir22)".some,
             description = None,
             roles = Set.empty,
-            _type = `image/tiff`.some
-            // "eo:bands": [6],
+            _type = `image/tiff`.some,
+            Map("eo:bands" -> List(6)).asJsonObject
           ),
           "B8" -> StacItemAsset(
             href =
-              "https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/142/210/LC08_L1GT_142210_20180123_20180123_01_RT/LC08_L1GT_142210_20180123_20180123_01_RT_B8.TIF",
+              "https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/030/033/LC08_L1TP_030033_20180615_20180703_01_T1/LC08_L1TP_030033_20180615_20180703_01_T1_B8.TIF",
             title = "Band 8 (pan)".some,
             description = None,
             roles = Set.empty,
-            _type = `image/tiff`.some
-            // "eo:bands": [7],
+            _type = `image/tiff`.some,
+            Map("eo:bands" -> List(7)).asJsonObject
           ),
           "B9" -> StacItemAsset(
             href =
-              "https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/142/210/LC08_L1GT_142210_20180123_20180123_01_RT/LC08_L1GT_142210_20180123_20180123_01_RT_B9.TIF",
+              "https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/030/033/LC08_L1TP_030033_20180615_20180703_01_T1/LC08_L1TP_030033_20180615_20180703_01_T1_B9.TIF",
             title = "Band 9 (cirrus)".some,
             description = None,
             roles = Set.empty,
-            _type = `image/tiff`.some
-            // "eo:bands": [8],
+            _type = `image/tiff`.some,
+            Map("eo:bands" -> List(8)).asJsonObject
           ),
           "B10" -> StacItemAsset(
             href =
-              "https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/142/210/LC08_L1GT_142210_20180123_20180123_01_RT/LC08_L1GT_142210_20180123_20180123_01_RT_B10.TIF",
+              "https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/030/033/LC08_L1TP_030033_20180615_20180703_01_T1/LC08_L1TP_030033_20180615_20180703_01_T1_B10.TIF",
             title = "Band 10 (lwir)".some,
             description = None,
             roles = Set.empty,
-            _type = `image/tiff`.some
-            // "eo:bands": [9],
+            _type = `image/tiff`.some,
+            Map("eo:bands" -> List(9)).asJsonObject
           ),
           "B11" -> StacItemAsset(
             href =
-              "https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/142/210/LC08_L1GT_142210_20180123_20180123_01_RT/LC08_L1GT_142210_20180123_20180123_01_RT_B11.TIF",
+              "https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/030/033/LC08_L1TP_030033_20180615_20180703_01_T1/LC08_L1TP_030033_20180615_20180703_01_T1_B11.TIF",
             title = "Band 11 (lwir)".some,
             description = None,
             roles = Set.empty,
+            _type = `image/tiff`.some,
+            Map("eo:bands" -> List(10)).asJsonObject
+          ),
+          "ANG" -> StacItemAsset(
+            href =
+              "https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/030/033/LC08_L1TP_030033_20180615_20180703_01_T1/LC08_L1TP_030033_20180615_20180703_01_T1_ANG.txt",
+            title = "Angle coefficients file".some,
+            description = None,
+            roles = Set.empty,
+            _type = `text/plain`.some
+          ),
+          "MTL" -> StacItemAsset(
+            href =
+              "https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/030/033/LC08_L1TP_030033_20180615_20180703_01_T1/LC08_L1TP_030033_20180615_20180703_01_T1_MTL.txt",
+            title = "original metadata file".some,
+            description = None,
+            roles = Set.empty,
+            _type = `text/plain`.some
+          ),
+          "BQA" -> StacItemAsset(
+            href =
+              "https://s3-us-west-2.amazonaws.com/landsat-pds/c1/L8/030/033/LC08_L1TP_030033_20180615_20180703_01_T1/LC08_L1TP_030033_20180615_20180703_01_T1_BQA.TIF",
+            title = "Band quality data".some,
+            description = None,
+            roles = Set.empty,
             _type = `image/tiff`.some
-            // "eo:bands": [10],
           )
         ),
         collection = collection.id.some
@@ -344,7 +370,7 @@ class CatalogLayerSpec extends AnyFunSpec with Matchers {
         NonEmptyList.fromListUnsafe(List("layer-us") map { NonEmptyString.unsafeFrom })
       ).valid
       item.asJson.deepDropNullValues shouldBe getJson(
-        "/catalogs/landsat-stac-layers/landsat-8-l1/LC81422102018023LGN00.json"
+        "/catalogs/landsat-stac-layers/landsat-8-l1/2018-06/LC80300332018166LGN00.json"
       )
       item.asJson.as[StacItem].valueOr(throw _) shouldBe item
     }

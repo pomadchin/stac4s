@@ -209,49 +209,78 @@ class CatalogSpec extends AnyFunSpec with Matchers {
                      |    "coordinates": [
                      |      [
                      |        [
-                     |          51.33855,
-                     |          72.27502
+                     |          72.41047929658137,
+                     |          49.7177153248036
                      |        ],
                      |        [
-                     |          51.36812,
-                     |          75.70821
+                     |          72.4099,
+                     |          49.7178
                      |        ],
                      |        [
-                     |          49.19092,
-                     |          75.67662
+                     |          72.42304462193712,
+                     |          49.7506571512844
                      |        ],
                      |        [
-                     |          49.16354,
-                     |          72.39640
+                     |          72.43942174696257,
+                     |          49.79159447737395
                      |        ],
                      |        [
-                     |          51.33855,
-                     |          72.27502
+                     |          72.97737644295803,
+                     |          51.13630099803396
+                     |        ],
+                     |        [
+                     |          72.99109436013279,
+                     |          51.1705911953537
+                     |        ],
+                     |        [
+                     |          73.0069,
+                     |          51.2101
+                     |        ],
+                     |        [
+                     |          73.00767938517399,
+                     |          51.209985918418724
+                     |        ],
+                     |        [
+                     |          75.5702,
+                     |          50.8349
+                     |        ],
+                     |        [
+                     |          75.55241658634094,
+                     |          50.79567530937191
+                     |        ],
+                     |        [
+                     |          74.91339206721759,
+                     |          49.386185570959974
+                     |        ],
+                     |        [
+                     |          74.8988,
+                     |          49.354
+                     |        ],
+                     |        [
+                     |          72.41047929658137,
+                     |          49.7177153248036
                      |        ]
                      |      ]
                      |    ]
                      |  }""".stripMargin.parseGeoJson[Polygon],
-        bbox = TwoDimBbox(49.16354, 72.27502, 51.36812, 75.67662),
+        bbox = TwoDimBbox(72.27502, 72.27502, 51.36812, 75.67662),
         properties = Map(
-          "collection"                           -> "landsat-8-l1".asJson,
-          "datetime"                             -> "2014-06-02T09:22:02Z".asJson,
-          "eo:gsd"                               -> 15.asJson,
-          "eo:cloud_cover"                       -> 10.asJson,
-          "view:off_nadir"                       -> 0.asJson,
-          "view:sun_azimuth"                     -> 149.01607154.asJson,
-          "view:sun_elevation"                   -> 59.21424700.asJson,
-          "view:azimuth"                         -> 0.asJson,
-          "landsat:wrs_path"                     -> 153.asJson,
-          "landsat:wrs_row"                      -> 25.asJson,
-          "landsat:earth_sun_distance"           -> 1.0141560.asJson,
-          "landsat:ground_control_points_verify" -> 114.asJson,
-          "landsat:geometric_rmse_model"         -> 7.562.asJson,
-          "landsat:image_quality_tirs"           -> 9.asJson,
-          "landsat:ground_control_points_model"  -> 313.asJson,
-          "landsat:geometric_rmse_model_x"       -> 5.96.asJson,
-          "landsat:geometric_rmse_model_y"       -> 4.654.asJson,
-          "landsat:geometric_rmse_verify"        -> 5.364.asJson,
-          "landsat:image_quality_oli"            -> 9.asJson
+          "collection"               -> "landsat-8-l1".asJson,
+          "datetime"                 -> "2014-06-02T09:22:02Z".asJson,
+          "eo:sun_azimuth"           -> 149.01607154.asJson,
+          "eo:sun_elevation"         -> 59.214247.asJson,
+          "eo:cloud_cover"           -> 10.asJson,
+          "eo:row"                   -> "025".asJson,
+          "eo:column"                -> "153".asJson,
+          "landsat:product_id"       -> "LC08_L1TP_015032_20180521_20180605_01_T1".asJson,
+          "landsat:scene_id"         -> "LC81530252014153LGN00".asJson,
+          "landsat:processing_level" -> "L1T".asJson,
+          "landsat:tier"             -> "pre-collection".asJson,
+          "eo:epsg"                  -> 32643.asJson,
+          "eo:instrument"            -> "OLI_TRIS".asJson,
+          "eo:off_nadir"             -> 0.asJson,
+          "eo:platform"              -> "landsat-8".asJson,
+          "eo:gsd"                   -> 15.asJson
         ).asJsonObject,
         links = List(
           StacLink(
